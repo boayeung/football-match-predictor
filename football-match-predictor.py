@@ -132,6 +132,8 @@ data = data[cols_to_consider]
 print(data[data.isna().any(axis=1)])
 data = data.dropna(axis=0)
 
+print(data.shape)
+
 # Training & Testing
 
 X = data[input_filter]
@@ -139,25 +141,25 @@ Y = data['FTR']
 
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2)
 
-svc_classifier = SVC(random_state=100, kernel='rbf')
-lr_classifier = LogisticRegression(multi_class='ovr', max_iter=500)
-nbClassifier = GaussianNB()
-dtClassifier = DecisionTreeClassifier()
+# svc_classifier = SVC(random_state=100, kernel='rbf')
+# lr_classifier = LogisticRegression(multi_class='ovr', max_iter=500)
+# nbClassifier = GaussianNB()
+# dtClassifier = DecisionTreeClassifier()
 rfClassifier = RandomForestClassifier()
 
 # print("Support Vector Machine")
 # print("-" * 20)
 # model(svc_classifier, X_train, Y_train, X_test, Y_test)
 
-print()
-print("Logistic Regression one vs All Classifier")
-print("-" * 20)
-model(lr_classifier, X_train, Y_train, X_test, Y_test)
+# print()
+# print("Logistic Regression one vs All Classifier")
+# print("-" * 20)
+# model(lr_classifier, X_train, Y_train, X_test, Y_test)
 
-print()
-print("Gaussain Naive Bayes Classifier")
-print("-" * 20)
-model(nbClassifier, X_train, Y_train, X_test, Y_test)
+# print()
+# print("Gaussain Naive Bayes Classifier")
+# print("-" * 20)
+# model(nbClassifier, X_train, Y_train, X_test, Y_test)
 
 # print()
 # print("Decision Tree Classifier")
@@ -178,8 +180,8 @@ if shouldExport.strip().lower() == 'y':
 
     makedirs(exportedModelsPath, exist_ok=True)
 
-    dump(lr_classifier, f'{exportedModelsPath}/lr_classifier.model')
-    dump(nbClassifier, f'{exportedModelsPath}/nb_classifier.model')
+    # dump(lr_classifier, f'{exportedModelsPath}/lr_classifier.model')
+    # dump(nbClassifier, f'{exportedModelsPath}/nb_classifier.model')
     dump(rfClassifier, f'{exportedModelsPath}/rf_classifier.model')
 
     exportMetaData = dict()
